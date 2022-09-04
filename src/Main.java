@@ -28,7 +28,9 @@ public class Main {
 
     private static void printAll(Employee[] employees) {
         for (Employee current : employees) {
+            if (current != null) {
             System.out.println(current);
+            }
         }
     }
 
@@ -39,7 +41,9 @@ public class Main {
     private static int summAll(Employee[] employees) {
         int summ = 0;
         for (Employee current : employees) {
+            if (current != null) {
             summ += current.getSalary();
+            }
         }
         return summ;
     }
@@ -48,7 +52,7 @@ public class Main {
         int min = employees[0].getSalary();
         int minId = employees[0].getId();
         for (Employee current : employees) {
-            if (min > current.getSalary()) {
+            if (current != null && min > current.getSalary()) {
                 min = current.getSalary();
                 minId = current.getId();
             }
@@ -60,7 +64,7 @@ public class Main {
         int max = employees[0].getSalary();
         int maxId = employees[0].getId();
         for (Employee current : employees) {
-            if (max < current.getSalary()) {
+            if (current != null && max < current.getSalary()) {
                 max = current.getSalary();
                 maxId = current.getId();
             }
@@ -74,7 +78,9 @@ public class Main {
 
     private static void printNames(Employee[] employees) {
         for (Employee current: employees) {
+            if (current != null) {
             System.out.println(current.getName());
+            }
         }
     }
 
