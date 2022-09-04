@@ -47,6 +47,15 @@ public class Main {
         System.out.println();
         myEmployeeBook.deleteEmployee("Сидоров Денис Вадимович");
         myEmployeeBook.printAll();
+        System.out.println();
+
+        myEmployeeBook.editEmployeeSalary("Иванов Денис Леопольдович", 200000);
+        myEmployeeBook.editEmployeeDepartment("Иванов Денис Леопольдович", 5);
+        myEmployeeBook.printAll();
+        System.out.println();
+
+        myEmployeeBook.printAllDepartment();
+
 
     }
 

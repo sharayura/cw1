@@ -172,6 +172,44 @@ public class EmployeeBook {
         }
         System.out.println("Сотрудник " + name + " не найден");
     }
+    public void editEmployeeDepartment(String name, int department) {
+        for (int i = 0; i < this.employees.length; i++) {
+            if (employees[i] != null && employees[i].getName() == name) {
+                employees[i].setDepartment(department);
+                return;
+            }
+        }
+        System.out.println("Сотрудник " + name + " не найден");
+    }
+    public void editEmployeeSalary(String name, int salary) {
+        for (int i = 0; i < this.employees.length; i++) {
+            if (employees[i] != null && employees[i].getName() == name) {
+                employees[i].setSalary(salary);
+                return;
+            }
+        }
+        System.out.println("Сотрудник " + name + " не найден");
+    }
+
+    public void printAllDepartment() {
+        StringBuilder str = new StringBuilder();
+        int count = 0;
+        for (int i = 1; i <= 5; i++) {
+            for (Employee current : employees) {
+                if (current != null && current.getDepartment() == i) {
+                    if (count > 0) {
+                        str.append(", ");
+                    }
+                    str.append(current.getName());
+                    count ++;
+                }
+            }
+            System.out.printf("В отделе %d сейчас %d человек: ", i, count);
+            System.out.println(str);
+            count = 0;
+            str.delete(0, str.length());
+        }
+    }
 
     public void fillEmployees(int number) {
         String[] namesArr = {"Иван", "Павел", "Василий", "Петр", "Кирилл", "Александр", "Алексей", "Антон" };
