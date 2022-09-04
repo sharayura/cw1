@@ -39,6 +39,14 @@ public class Main {
         System.out.println();
         System.out.println("Сотрудники с зарплатой больше " + sampleSalary);
         myEmployeeBook.printMoreThan(sampleSalary);
+        System.out.println();
+
+        myEmployeeBook.addNewEmployee("Сидоров Денис Вадимович", 4, 99000);
+        myEmployeeBook.addNewEmployee("Иванов Денис Леопольдович", 2, 109000);
+        myEmployeeBook.printAll();
+        System.out.println();
+        myEmployeeBook.deleteEmployee("Сидоров Денис Вадимович");
+        myEmployeeBook.printAll();
 
     }
 

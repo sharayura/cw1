@@ -53,10 +53,13 @@ public class EmployeeBook {
         }
     }
 
-    //??????????????????????????
     public void printById(int id) {
-        System.out.println("ID: " + employees[id - 1].getId() + ". Ф.И.О.: " + employees[id - 1].getName()
-                + ". ЗП: " + employees[id - 1].getSalary());
+        for (Employee current: this.employees) {
+            if (current != null && current.getId() == id) {
+                System.out.println("ID: " + employees[id - 1].getId() + ". Ф.И.О.: " + employees[id - 1].getName()
+                        + ". ЗП: " + employees[id - 1].getSalary());
+            }
+        }
     }
 
     public int summAllDepartment(int department) {
@@ -151,6 +154,24 @@ public class EmployeeBook {
         }
     }
 
+    public void addNewEmployee(String name, int department, int salary) {
+        for (int i = 0; i < this.employees.length; i++) {
+            if (this.employees[i] == null) {
+                this.employees[i] = new Employee(name, department, salary);
+                return;
+            }
+        }
+        System.out.println("Нет места для нового сотрудника");
+    }
+    public void deleteEmployee(String name) {
+        for (int i = 0; i < this.employees.length; i++) {
+            if (employees[i] != null && employees[i].getName() == name) {
+                employees[i] = null;
+                return;
+            }
+        }
+        System.out.println("Сотрудник " + name + " не найден");
+    }
 
     public void fillEmployees(int number) {
         String[] namesArr = {"Иван", "Павел", "Василий", "Петр", "Кирилл", "Александр", "Алексей", "Антон" };
