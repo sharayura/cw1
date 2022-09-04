@@ -45,7 +45,7 @@ public class Main {
 
     private static void printLessThan(Employee[] employees, int sampleSalary) {
         for (Employee current: employees) {
-            if (current.getSalary() < sampleSalary) {
+            if (current != null && current.getSalary() < sampleSalary) {
                 printById(employees, current.getId());
             }
         }
@@ -53,7 +53,7 @@ public class Main {
 
     private static void printMoreThan(Employee[] employees, int sampleSalary) {
         for (Employee current: employees) {
-            if (current.getSalary() >= sampleSalary) {
+            if (current != null && current.getSalary() >= sampleSalary) {
                 printById(employees, current.getId());
             }
         }
@@ -65,20 +65,24 @@ public class Main {
             return;
         }
         for (Employee current : employees) {
+            if (current != null) {
             int salary = current.getSalary();
             current.setSalary(salary + salary * index / 100);
+            }
         }
     }
 
     private static void printAll(Employee[] employees) {
         for (Employee current : employees) {
+            if (current != null) {
             System.out.println(current);
+            }
         }
     }
 
     private static void printAllFromDepartment(Employee[] employees, int department) {
         for (Employee current : employees) {
-            if (current.getDepartment() == department) {
+            if (current != null && current.getDepartment() == department) {
                 System.out.println("ID: " + current.getId() + ". Ф.И.О.: " + current.getName() + ". ЗП: " + current.getSalary());
             }
         }
@@ -92,7 +96,7 @@ public class Main {
     private static int summAllDepartment(Employee[] employees, int department) {
         int summ = 0;
         for (Employee current : employees) {
-            if (current.getDepartment() == department) {
+            if (current != null && current.getDepartment() == department) {
                 summ += current.getSalary();
             }
         }
@@ -106,7 +110,7 @@ public class Main {
         int minId = 0;
         int min = 0;
         for (Employee current : employees) {
-            if (current.getDepartment() == department) {
+            if (current != null && current.getDepartment() == department) {
                 min = current.getSalary();
                 minId = current.getId();
                 break;
@@ -116,7 +120,7 @@ public class Main {
             throw new RuntimeException("В данном отделе нет сотрудников");
         }
         for (Employee current : employees) {
-            if (current.getDepartment() == department && min > current.getSalary()) {
+            if (current != null && current.getDepartment() == department && min > current.getSalary()) {
                 min = current.getSalary();
                 minId = current.getId();
             }
@@ -131,7 +135,7 @@ public class Main {
         int maxId = 0;
         int max = 0;
         for (Employee current : employees) {
-            if (current.getDepartment() == department) {
+            if (current != null && current.getDepartment() == department) {
                 max = current.getSalary();
                 maxId = current.getId();
                 break;
@@ -141,7 +145,7 @@ public class Main {
             throw new RuntimeException("В данном отделе нет сотрудников");
         }
         for (Employee current : employees) {
-            if (current.getDepartment() == department && max < current.getSalary()) {
+            if (current != null && current.getDepartment() == department && max < current.getSalary()) {
                 max = current.getSalary();
                 maxId = current.getId();
             }
@@ -153,7 +157,7 @@ public class Main {
         int count = 0;
         int summ = 0;
         for (Employee current: employees) {
-            if (current.getDepartment() == department) {
+            if (current != null && current.getDepartment() == department) {
                 summ += current.getSalary();
                 count++;
             }
@@ -173,7 +177,7 @@ public class Main {
             throw new RuntimeException("Такого отдела нет");
         }
         for (Employee current : employees) {
-            if (current.getDepartment() == department) {
+            if (current != null && current.getDepartment() == department) {
             int salary = current.getSalary();
             current.setSalary(salary + salary * index / 100);
             }
