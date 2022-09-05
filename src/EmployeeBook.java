@@ -79,20 +79,14 @@ public class EmployeeBook {
         int minId = 0;
         int min = 0;
         for (Employee current : this.employees) {
-            if (current != null && current.getDepartment() == department) {
+            if (current != null && current.getDepartment() == department
+                    && (minId == 0 || min > current.getSalary())) {
                 min = current.getSalary();
                 minId = current.getId();
-                break;
             }
         }
         if (minId == 0) {
             throw new RuntimeException("В данном отделе нет сотрудников");
-        }
-        for (Employee current : this.employees) {
-            if (current != null && current.getDepartment() == department && min > current.getSalary()) {
-                min = current.getSalary();
-                minId = current.getId();
-            }
         }
         return minId;
     }
@@ -104,20 +98,14 @@ public class EmployeeBook {
         int maxId = 0;
         int max = 0;
         for (Employee current : this.employees) {
-            if (current != null && current.getDepartment() == department) {
+            if (current != null && current.getDepartment() == department
+                    && (maxId == 0 || max < current.getSalary())) {
                 max = current.getSalary();
                 maxId = current.getId();
-                break;
             }
         }
         if (maxId == 0) {
             throw new RuntimeException("В данном отделе нет сотрудников");
-        }
-        for (Employee current : employees) {
-            if (current != null && current.getDepartment() == department && max < current.getSalary()) {
-                max = current.getSalary();
-                maxId = current.getId();
-            }
         }
         return maxId;
     }
