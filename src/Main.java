@@ -44,7 +44,7 @@ public class Main {
     }
 
     private static void printLessThan(Employee[] employees, int sampleSalary) {
-        for (Employee current: employees) {
+        for (Employee current : employees) {
             if (current != null && current.getSalary() < sampleSalary) {
                 printById(employees, current.getId());
             }
@@ -52,7 +52,7 @@ public class Main {
     }
 
     private static void printMoreThan(Employee[] employees, int sampleSalary) {
-        for (Employee current: employees) {
+        for (Employee current : employees) {
             if (current != null && current.getSalary() >= sampleSalary) {
                 printById(employees, current.getId());
             }
@@ -66,8 +66,8 @@ public class Main {
         }
         for (Employee current : employees) {
             if (current != null) {
-            int salary = current.getSalary();
-            current.setSalary(salary + salary * index / 100);
+                int salary = current.getSalary();
+                current.setSalary(salary + salary * index / 100);
             }
         }
     }
@@ -75,7 +75,7 @@ public class Main {
     private static void printAll(Employee[] employees) {
         for (Employee current : employees) {
             if (current != null) {
-            System.out.println(current);
+                System.out.println(current);
             }
         }
     }
@@ -110,20 +110,14 @@ public class Main {
         int minId = 0;
         int min = 0;
         for (Employee current : employees) {
-            if (current != null && current.getDepartment() == department) {
-                min = current.getSalary();
-                minId = current.getId();
-                break;
+            if (current != null && current.getDepartment() == department
+                    && (minId == 0 || min > current.getSalary())) {
+                    min = current.getSalary();
+                    minId = current.getId();
             }
         }
         if (minId == 0) {
             throw new RuntimeException("В данном отделе нет сотрудников");
-        }
-        for (Employee current : employees) {
-            if (current != null && current.getDepartment() == department && min > current.getSalary()) {
-                min = current.getSalary();
-                minId = current.getId();
-            }
         }
         return minId;
     }
@@ -135,20 +129,14 @@ public class Main {
         int maxId = 0;
         int max = 0;
         for (Employee current : employees) {
-            if (current != null && current.getDepartment() == department) {
+            if (current != null && current.getDepartment() == department
+                    && (maxId == 0 || max < current.getSalary())) {
                 max = current.getSalary();
                 maxId = current.getId();
-                break;
             }
         }
         if (maxId == 0) {
             throw new RuntimeException("В данном отделе нет сотрудников");
-        }
-        for (Employee current : employees) {
-            if (current != null && current.getDepartment() == department && max < current.getSalary()) {
-                max = current.getSalary();
-                maxId = current.getId();
-            }
         }
         return maxId;
     }
@@ -156,17 +144,18 @@ public class Main {
     private static double averageSalaryDepartment(Employee[] employees, int department) {
         int count = 0;
         int summ = 0;
-        for (Employee current: employees) {
+        for (Employee current : employees) {
             if (current != null && current.getDepartment() == department) {
                 summ += current.getSalary();
                 count++;
             }
         }
-            if (count == 0) {
-                throw new RuntimeException("В отделе нет сотрудников");
-            }
+        if (count == 0) {
+            throw new RuntimeException("В отделе нет сотрудников");
+        }
         return (double) summ / count;
     }
+
     private static void salaryIndexDepartment(Employee[] employees, int department, int index) {
 
         if (index < 0) {
@@ -178,17 +167,17 @@ public class Main {
         }
         for (Employee current : employees) {
             if (current != null && current.getDepartment() == department) {
-            int salary = current.getSalary();
-            current.setSalary(salary + salary * index / 100);
+                int salary = current.getSalary();
+                current.setSalary(salary + salary * index / 100);
             }
         }
     }
 
 
     private static void fillEmployees(Employee[] employees) {
-        String[] namesArr = {"Иван", "Павел", "Василий", "Петр", "Кирилл", "Александр", "Алексей", "Антон" };
-        String[] middlenamesArr = {"Иванович", "Павлович", "Васильевич", "Петрович", "Кириллович", "Александрович", "Алексеевич", "Антонович" };
-        String[] lastnamesArr = {"Иванов", "Павлов", "Васильев", "Петров", "Кириллов", "Александров", "Алексеев", "Антонов" };
+        String[] namesArr = {"Иван", "Павел", "Василий", "Петр", "Кирилл", "Александр", "Алексей", "Антон"};
+        String[] middlenamesArr = {"Иванович", "Павлович", "Васильевич", "Петрович", "Кириллович", "Александрович", "Алексеевич", "Антонович"};
+        String[] lastnamesArr = {"Иванов", "Павлов", "Васильев", "Петров", "Кириллов", "Александров", "Алексеев", "Антонов"};
         Random rand = new Random();
         StringBuilder currentName = new StringBuilder();
         for (int i = 0; i < employees.length; i++) {
