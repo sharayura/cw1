@@ -153,7 +153,7 @@ public class EmployeeBook {
     }
     public void deleteEmployee(String name) {
         for (int i = 0; i < this.employees.length; i++) {
-            if (employees[i] != null && employees[i].getName() == name) {
+            if (employees[i] != null && employees[i].getName().equals(name)) {
                 employees[i] = null;
                 return;
             }
@@ -161,18 +161,18 @@ public class EmployeeBook {
         System.out.println("Сотрудник " + name + " не найден");
     }
     public void editEmployeeDepartment(String name, int department) {
-        for (int i = 0; i < this.employees.length; i++) {
-            if (employees[i] != null && employees[i].getName() == name) {
-                employees[i].setDepartment(department);
+        for (Employee current : this.employees) {
+            if (current != null && current.getName().equals(name)) {
+                current.setDepartment(department);
                 return;
             }
         }
         System.out.println("Сотрудник " + name + " не найден");
     }
     public void editEmployeeSalary(String name, int salary) {
-        for (int i = 0; i < this.employees.length; i++) {
-            if (employees[i] != null && employees[i].getName() == name) {
-                employees[i].setSalary(salary);
+        for (Employee current : this.employees) {
+            if (current != null && current.getName().equals(name)) {
+                current.setSalary(salary);
                 return;
             }
         }
